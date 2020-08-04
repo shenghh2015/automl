@@ -367,6 +367,7 @@ def build_backbone(features, config):
         backbone_name,
         training=is_training_bn,
         override_params=override_params)
+    print(endpoints.keys()); print(backbone_name)
     u1 = endpoints['reduction_1']
     u2 = endpoints['reduction_2']
     u3 = endpoints['reduction_3']

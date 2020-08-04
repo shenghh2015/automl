@@ -178,7 +178,7 @@ def default_detection_configs():
   h.act_type = 'swish'
 
   # input preprocessing parameters
-  h.image_size = 640  # An integer or a string WxH such as 640x320.
+  h.image_size = 600  # An integer or a string WxH such as 640x320.
   h.target_size = None
   h.input_rand_hflip = True
   h.train_scale_min = 0.1
@@ -191,8 +191,8 @@ def default_detection_configs():
   # dataset specific parameters
   # TODO(tanmingxing): update this to be 91 for COCO, and 21 for pascal.
   h.num_classes = 90  # 1+ actual classes, 0 is reserved for background.
-  h.seg_num_classes = 3  # segmentation classes
-  h.heads = ['object_detection']  # 'object_detection', 'segmentation'
+  h.seg_num_classes = 4  # segmentation classes
+  h.heads = ['segmentation']  # 'object_detection', 'segmentation'
 
   h.skip_crowd_during_training = True
   h.label_id_mapping = None
@@ -200,7 +200,7 @@ def default_detection_configs():
   h.regenerate_source_id = False
 
   # model architecture
-  h.min_level = 3
+  h.min_level = 1 #3
   h.max_level = 7
   h.num_scales = 3
   # aspect ratio with format (w, h). Can be computed with k-mean per dataset.
@@ -285,6 +285,96 @@ def default_detection_configs():
   h.resnet_depth = 50
   return h
 
+
+# efficientdet_model_param_dict = {
+#     'efficientdet-d0':
+#         dict(
+#             name='efficientdet-d0',
+#             backbone_name='efficientnet-b0',
+#             image_size=512,
+#             fpn_num_filters=64,
+#             fpn_cell_repeats=3,
+#             box_class_repeats=3,
+#         ),
+#     'efficientdet-d1':
+#         dict(
+#             name='efficientdet-d1',
+#             backbone_name='efficientnet-b1',
+#             image_size=640,
+#             fpn_num_filters=88,
+#             fpn_cell_repeats=4,
+#             box_class_repeats=3,
+#         ),
+#     'efficientdet-d2':
+#         dict(
+#             name='efficientdet-d2',
+#             backbone_name='efficientnet-b2',
+#             image_size=768,
+#             fpn_num_filters=112,
+#             fpn_cell_repeats=5,
+#             box_class_repeats=3,
+#         ),
+#     'efficientdet-d3':
+#         dict(
+#             name='efficientdet-d3',
+#             backbone_name='efficientnet-b3',
+#             image_size=896,
+#             fpn_num_filters=160,
+#             fpn_cell_repeats=6,
+#             box_class_repeats=4,
+#         ),
+#     'efficientdet-d4':
+#         dict(
+#             name='efficientdet-d4',
+#             backbone_name='efficientnet-b4',
+#             image_size=1024,
+#             fpn_num_filters=224,
+#             fpn_cell_repeats=7,
+#             box_class_repeats=4,
+#         ),
+#     'efficientdet-d5':
+#         dict(
+#             name='efficientdet-d5',
+#             backbone_name='efficientnet-b5',
+#             image_size=1280,
+#             fpn_num_filters=288,
+#             fpn_cell_repeats=7,
+#             box_class_repeats=4,
+#         ),
+#     'efficientdet-d6':
+#         dict(
+#             name='efficientdet-d6',
+#             backbone_name='efficientnet-b6',
+#             image_size=1280,
+#             fpn_num_filters=384,
+#             fpn_cell_repeats=8,
+#             box_class_repeats=5,
+#             fpn_weight_method='sum',  # Use unweighted sum for stability.
+#         ),
+#     'efficientdet-d7':
+#         dict(
+#             name='efficientdet-d7',
+#             backbone_name='efficientnet-b6',
+#             image_size=1536,
+#             fpn_num_filters=384,
+#             fpn_cell_repeats=8,
+#             box_class_repeats=5,
+#             anchor_scale=5.0,
+#             fpn_weight_method='sum',  # Use unweighted sum for stability.
+#         ),
+#     'efficientdet-d7x':
+#         dict(
+#             name='efficientdet-d7x',
+#             backbone_name='efficientnet-b7',
+#             image_size=1536,
+#             fpn_num_filters=384,
+#             fpn_cell_repeats=8,
+#             box_class_repeats=5,
+#             anchor_scale=4.0,
+#             max_level=8,
+#             fpn_weight_method='sum',  # Use unweighted sum for stability.
+#         ),
+# }
 
 efficientdet_model_param_dict = {
     'efficientdet-d0':

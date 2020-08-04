@@ -747,6 +747,10 @@ class Model(tf.keras.Model):
           if is_reduction:
             self.endpoints['reduction_%s/%s' % (reduction_idx, k)] = v
     self.endpoints['features'] = outputs
+#     for key in self.endpoints.keys():
+#     	if 'reduction' in key:
+#     		print(key, self.endpoints[key])
+#     print(self.endpoints.keys())
 
     if not features_only:
       # Calls final layers and returns logits.
